@@ -6,3 +6,58 @@
     Martin-Luther-University Halle-Wittenberg.
 
 ===================================================
+
+Copyright (C) 2013 by Marco Hampel
+
+The files that are part of mluthsis may be distributed
+and/or modified under the conditions of the LaTeX Project
+Public License (LPPL), either version 1.3c of this
+license or (at your option) any later version.
+The latest version of this license is in:
+
+    http://www.latex-project.org/lppl.txt
+
+One copy of LPPL version 1.3c can be found in the same
+directory as this README in a file named COPYRIGHT.
+
+
+GETTING STARTED
+===============
+
+The LaTeX class mluthsis comes in two files:
+
+    mluthsis.ins
+    mluthsis.dtx
+
+In order to create the files you need in order to use the
+new class, open a terminal, navigate to the directory where
+mluthsis.ins and mluthsis.dtx are located and run the
+following set of commands:
+
+    1.      latex mluthsis.ins
+    2.      pdflatex mluthsis.dtx
+    3.      makeindex -s gind.ist -o mluthsis.ind mluthsis.idx
+    4.      makeindex -s gglo.ist -o mluthsis.gls mluthsis.glo
+    5.      pdflatex mluthsis.dtx
+    6.      pdflatex mluthsis.dtx
+
+Doing so will fill your directory with alot of files.
+You will need the following:
+
+    mluthsis.pdf
+        This file is the class' documentation and contains all
+        the information there is concerning the mluthsis class.
+        An already compiled copy of this file should be in the
+        original folder where you found mluthsis.ins and
+        mluthsis.dtx.
+
+    mluthsis.cls
+        This file is the class file which you will need to
+        use the mluthsis class.
+
+Now you have all you need. To typeset your own document with
+the mluthsis class, simply copy your mluthsis.cls file into
+the folder of your actual LaTeX-Poject or - if you don't want
+to do copy it every time you create a LaTeX-document using
+this class - simply put it into a directory that is searched
+by LaTeX at run.

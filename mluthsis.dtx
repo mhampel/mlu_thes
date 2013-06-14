@@ -27,19 +27,42 @@
 [2013/06/13 v0.1 A new LaTeX class for typesetting theses at Martin-Luther-University Halle-Wittenberg.]
 %</mluthsis>
 %<mluthsis>\LoadClass{scrreprt}
-%<mluthsis>\usepackage[cmyk]{xcolor}
+%<mluthsis>\usepackage{xcolor}
+%<mluthsis>\definecolor{MLUlightgreen}{HTML}{9bc34b}
+%<mluthsis>\definecolor{MLUuniversity}{HTML}{005133}
+%<mluthsis>\definecolor{MLUtheology}{HTML}{000000}
+%<mluthsis>\definecolor{MLUlaweconomy}{HTML}{aa263c}
+%<mluthsis>\definecolor{MLUmedicine}{HTML}{bb2b16}
+%<mluthsis>\definecolor{MLUphilosophy}{HTML}{993c8c}
+%<mluthsis>\definecolor{MLUbiochemphy}{HTML}{2d7aab}
+%<mluthsis>\definecolor{MLUagrogeoinf}{HTML}{368429}
+%<mluthsis>\definecolor{MLUenginscien}{HTML}{627b86}
 %
 %<*driver>
     \documentclass{ltxdoc}
-    \usepackage{hyperref}
-    \usepackage{xcolor}
-    \definecolor{MLUuniv}{cmyk}{1.00,0.00,0.79,0.60}
-    \definecolor{MLUtheo}{cmyk}{0.00,0.00,0.00,1.00}
-    \definecolor{MLUjura}{cmyk}{0.00,0.91,0.56,0.34}
-    \definecolor{MLUmedi}{cmyk}{0.00,0.91,1.00,0.24}
-    \definecolor{MLUlawi}{cmyk}{0.72,0.00,1.00,0.43}
-    \definecolor{MLUphil}{cmyk}{0.47,0.87,0.00,0.00}
-    \definecolor{MLUmana}{cmyk}{1.00,0.24,0.00,0.18}
+    \usepackage[
+        format=plain,
+        indention=0.5cm,
+        labelsep=endash,
+        justification=justified,
+        singlelinecheck=false,
+        font=footnotesize,
+        labelfont=sc,
+        figureposition=bottom,
+        tableposition=top,
+        width=0.9\textwidth
+    ]{caption}
+    \usepackage[table]{xcolor}
+    \definecolor{MLUlightgreen}{HTML}{9bc34b}
+    \definecolor{MLUuniversity}{HTML}{005133}
+    \definecolor{MLUtheology}{HTML}{000000}
+    \definecolor{MLUlaweconomy}{HTML}{aa263c}
+    \definecolor{MLUmedicine}{HTML}{bb2b16}
+    \definecolor{MLUphilosophy}{HTML}{993c8c}
+    \definecolor{MLUbiochemphy}{HTML}{2d7aab}
+    \definecolor{MLUagrogeoinf}{HTML}{368429}
+    \definecolor{MLUenginscien}{HTML}{627b86}
+    \usepackage[pdftex]{hyperref}
     \EnableCrossrefs
     \CodelineIndex
     \RecordChanges
@@ -49,7 +72,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{10}
+% \CheckSum{3}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -71,66 +94,80 @@
 %
 % \GetFileInfo{mluthsis.dtx}
 %
+% \DoNotIndex{\newcommand,\textit}
+%
 % \title{The \textsf{mluthsis} class\thanks{This document corresponds to \textsf{mluthsis}~\fileversion, dated \filedate.}}
 % \author{Marco Hampel\\ \small{\texttt{mhampel.dev@gmx.net}}}
+% \date{\today}
 %
 % \maketitle
 %
 % \begin{abstract}
-%   This document class is for all graduate and undergraduate students at Martin-Luther-University Halle-Wittenberg who want to typeset their theses using \LaTeX{}.
+%   This document class is for all graduate and undergraduate students at Martin-Luther-University Halle-Wittenberg who want to typeset their theses using \LaTeX{}. Based on the class \textsf{scrreprt}, it provides a bundle of predefined commands as well as predefined colors.
 % \end{abstract}
 %
-% \section{Introduction}
-%   Imagine a fancy introduction here.
+% \section{Getting Started}
+% 
+% The LaTeX class mluthsis comes in two files:
+% \begin{itemize}
+%   \item mluthsis.ins
+%   \item mluthsis.dtx
+% \end{itemize}
+% In order to create the files you need in order to use the new class, open a terminal, navigate to the directory where mluthsis.ins and mluthsis.dtx are located and run the following set of commands:
+% \begin{enumerate}
+%   \item latex mluthsis.ins
+%   \item pdflatex mluthsis.dtx
+%   \item makeindex -s gind.ist -o mluthsis.ind mluthsis.idx
+%   \item makeindex -s gglo.ist -o mluthsis.gls mluthsis.glo
+%   \item pdflatex mluthsis.dtx
+%   \item pdflatex mluthsis.dtx
+% \end{enumerate}
+% Doing so will fill your directory with alot of files. You will need the following:
+% \begin{description}
+%   \item[\rm mluthsis.pdf] \hfill \\
+%       This file is the class' documentation and contains all the information there is concerning the \textsf{mluthsis} class. An already compiled copy of this file should be in the original folder where you found mluthsis.ins and mluthsis.dtx.
+%   \item[\rm mluthsis.cls] \hfill \\
+%       This file is the class file which you will need to use the \textsf{mluthsis} class.
+% \end{description}
+% Now you have all you need. To typeset your own document with the \textsf{mluthsis} class, simply copy your mluthsis.cls file into the folder of your actual \LaTeX{}-Poject or - if you don't want to copy it every time you create a \LaTeX{}-document using this class - simply put it into a directory that is searched by \LaTeX{} at run.
 %
 % \section{Usage}
+% This class is based on the \textsf{scrreprt} class belonging to the \textsf{KOMA-Script} package by Markus Kohm \textit{et al.}; reading its extensive documentation is strongly recommended.
 %
-% The command |\taxon|\marg{text} should be used in combination with the name of a taxon. The macro simply puts the given text in italic letters.
+% \subsection{MLU Color Profile}
+% At Martin-Luther-University Halle-Wittenberg, every faculty has its own assigned color which is used to maintain a corporate design in letterheads, business cards, web pages, et cetera. There exists a brochure on the corporate design of Martin-Luther-University Halle-Wittenberg published by the rectorate in 1998\footnote{\url{http://edoc.bibliothek.uni-halle.de/servlets/MCRFileNodeServlet/HALCoRe_derivate_00000010/unicd4.pdf;jsessionid=b459qeml2l6?hosts=}}, though the color definition in this document are neither complete nor up to date. Therefore, the colors in this \textsf{mluthsis} class are derived from the .css style files of the university's web pages.\\
+% The color definitions provided by the \textsf{mluthsis} class can be reviewed in table \ref{tab:colorprofile}.
+% \begin{table}[ht]
+%   \renewcommand{\arraystretch}{1.25}
+%   \centering
+%   \caption{This table shows the colors provided by the \textsf{mluthsis} class with their names under which the colors can be addressed, a color preview, their respective hexadecimal HTML color code and the part of the organizational structure of the Martin-Luther-University Halle-Wittenberg the color represents.}
+%   \label{tab:colorprofile}
+%   \begin{tabular}{l p{1cm} l l}
+%       \hline
+%       Color Name      &                           & HTML Hex          & Representing \\\hline\hline
+%       MLUuniversity   & \cellcolor{MLUuniversity} & \texttt{\#005133} & University \\
+%       MLUlightgreen   & \cellcolor{MLUlightgreen} & \texttt{\#9bc34b} & None {\footnotesize (light green from university's web page)} \\
+%       MLUtheology     & \cellcolor{MLUtheology}   & \texttt{\#000000} & Faculty of Theology \\
+%       MLUlaweconomy   & \cellcolor{MLUlaweconomy} & \texttt{\#aa263c} & Faculty of Law, Economics and Business \\
+%       MLUmedicine     & \cellcolor{MLUmedicine}   & \texttt{\#bb2b16} & Faculty of Medicine \\
+%       MLUphilosophy   & \cellcolor{MLUphilosophy} & \texttt{\#993c8c} & Faculty of Philosophy I, II, III \\
+%       MLUbiochemphy   & \cellcolor{MLUbiochemphy} & \texttt{\#2d7aab} & Faculty of Natural Sciences I, II \\
+%       MLUagrogeoinf   & \cellcolor{MLUagrogeoinf} & \texttt{\#368429} & Faculty of Natural Sciences III \\
+%       MLUenginscien   & \cellcolor{MLUenginscien} & \texttt{\#627b86} & Center of Engineering Sciences \\\hline
+%   \end{tabular}
+% \end{table}
 %
-% \StopEventually{\PrintChanges, \PrintIndex}
+% \subsection{New Commands}
+% The standard for typesetting taxa in life sciences is to set them in italic letters. By using the command\\[0.25cm]
+% \indent |\taxon|\marg{text}\\[0.25cm]
+% you can take account of that standard.
+%
+% \StopEventually{\PrintChanges \PrintIndex}
 %
 % \section{Implementation}
 %
-% \begin{macro}{Color profile}
-% The color profile for Martin-Luther-University Halle-Wittenberg has been implemented according to this \href{http://edoc.bibliothek.uni-halle.de/servlets/MCRFileNodeServlet/HALCoRe_derivate_00000010/unicd4.pdf;jsessionid=b459qeml2l6?hosts= }{corporate design booklet} published by the rectorate of the Martin-Luther-University Halle-Wittenberg in 1998.\\[0.5cm]
-% \color{MLUuniv}\colorbox{MLUuniv}{Test}\color{black}~Pantone 3435 -- connected to the University in general.
-%    \begin{macrocode}
-\definecolor{MLUuniv}{cmyk}{1.00,0.00,0.79,0.60}
-%    \end{macrocode}
-% \vspace{0.5cm}
-% \color{MLUtheo}\colorbox{MLUtheo}{Test}\color{black}~Black -- connected to the Faculty of Theology.
-%    \begin{macrocode}
-\definecolor{MLUtheo}{cmyk}{0.00,0.00,0.00,1.00}
-%    \end{macrocode}
-% \vspace{0.5cm}
-% \color{MLUjura}\colorbox{MLUjura}{Test}\color{black}~Pantone 194 -- connected to the Faculty of Law, Economics and Business.
-%    \begin{macrocode}
-\definecolor{MLUjura}{cmyk}{0.00,0.91,0.56,0.34}
-%    \end{macrocode}
-% \vspace{0.5cm}
-% \color{MLUmedi}\colorbox{MLUmedi}{Test}\color{black}~Pantone 1805 -- connected to the Faculty of Medicine.
-%    \begin{macrocode}
-\definecolor{MLUmedi}{cmyk}{0.00,0.91,1.00,0.24}
-%    \end{macrocode}
-% \vspace{0.5cm}
-% \color{MLUlawi}\colorbox{MLUlawi}{Test}\color{black}~Pantone 364 -- connected to the Faculty of Natural Sciences III.
-%    \begin{macrocode}
-\definecolor{MLUlawi}{cmyk}{0.72,0.00,1.00,0.43}
-%    \end{macrocode}
-% \vspace{0.5cm}
-% \color{MLUphil}\colorbox{MLUphil}{Test}\color{black}~Pantone 513 -- connected to the Faculties of Philosophy.
-%    \begin{macrocode}
-\definecolor{MLUphil}{cmyk}{0.47,0.87,0.00,0.00}
-%    \end{macrocode}
-% \vspace{0.5cm}
-% \color{MLUmana}\colorbox{MLUmana}{Test}\color{black}~Pantone 3015 -- connected to the Faculty of Natural Sciences I and II.
-%    \begin{macrocode}
-\definecolor{MLUmana}{cmyk}{1.00,0.24,0.00,0.18}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{macro}{\taxon}
-% The command simply puts the text in italic letters. 
+% Use |\taxon|\marg{text} for typesetting taxa. 
 %    \begin{macrocode}
 \newcommand{\taxon}[1]{\textit{#1}}
 %    \end{macrocode}
